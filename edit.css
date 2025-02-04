@@ -1,0 +1,12 @@
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align the back button on the left */
+    width: 100%;
+}
+
+h2.form-title {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+}

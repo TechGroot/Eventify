@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventify - College Event Management</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="stylesheet" href="/admin.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo" class="logo-image">
+                <a href="/">Eventify</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard">Events</a></li>
+                <li><a href="/create-event">Create Event</a></li>
+                <li><a href="/#contact">Contact Us</a></li>
+                <% if (adminId) { %> <!-- Admin logged in -->
+                    <li>
+                        <div class="profile">
+                            <img src="images/profile.jpg" alt="Profile" class="profile-icon">
+                            <div class="dropdown">
+                                <button class="dropbtn">▼</button>
+                                <div class="dropdown-content">
+                                    <a href="/profile" class="profile-link">Profile</a>
+                                    <a href="/logout" class="profile-link">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <% } else { %> <!-- If not logged in -->
+                        <li><button id="login-btn" class="login-btn">Login</button></li>
+                        <% } %>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="event-form-section" class="event-form">
+        <div class="container">
+            <h2 class="form-title">Edit Event</h2>
+            <form action="/update/<%= event._id %>?_method=PUT" method="POST" enctype="multipart/form-data" id="event-form">
+                <!-- Event Type -->
+                <div class="form-group">
+                    <label for="event-type">Event Type</label>
+                    <select id="event-type" name="eventType" required>
+                        <option value="" disabled>Select an event type</option>
+                        <option value="Tech" <%=event.eventType==='Tech' ? 'selected' : '' %>>Tech Event</option>
+                        <option value="Sports" <%=event.eventType==='Sports' ? 'selected' : '' %>>Sports Event</option>
+                        <option value="Literature" <%=event.eventType==='Literature' ? 'selected' : '' %>>Literature
+                            Event</option>
+                        <option value="Cultural" <%=event.eventType==='Cultural' ? 'selected' : '' %>>Cultural Event
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Event Title -->
+                <div class="form-group">
+                    <label for="event-title">Event Title</label>
+                    <input type="text" id="event-title" name="eventTitle" value="<%= event.title %>"
+                        placeholder="Enter event title (e.g., Coding Marathon)" required />
+                </div>
+
+                <!-- Event Location -->
+                <div class="form-group">
+                    <label for="event-location">Event Location</label>
+                    <input type="text" id="event-location" name="eventLocation" value="<%= event.venue %>"
+                        placeholder="Enter event location" required />
+                </div>
+
+                <!-- Event Date -->
+                <div class="form-group">
+                    <label for="event-date">Event Date</label>
+                    <input type="date" id="event-date" name="eventDate"
+                        value="<%= new Date(event.date).toISOString().split('T')[0] %>" required />
+                </div>
+
+                <!-- Photo Upload -->
+                <div class="form-group">
+                    <label for="event-photo">Upload Photo</label>
+                    <input type="file" id="event-photo" name="eventPhoto" accept="image/*" />
+                    <div>
+                        <label>Current Image:</label>
+                        <img src="<%= event.image %>" alt="Current Event Image" width="100">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit" id="update-btn">Update Event</button>
+                    <button type="submit" id="delete-btn" formaction="/delete/<%= event._id %>?_method=DELETE" formmethod="POST">
+                        Delete Event
+                    </button>
+                </div>
+            </form>
+            <!-- Success Popup -->
+            <div id="success-popup" class="popup hidden">
+                <p>Your response has been submitted successfully!</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Eventify. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+    <script src="create-event.js"></script>
+</body>
+
+</html>

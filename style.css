@@ -1,0 +1,725 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    padding: 0;
+    margin: 0;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 16px 40px 11px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0px 10px 0px -20px;
+}
+
+/* Left Section: Logo and Heading */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff9800;
+    /* Vibrant orange for logo */
+    text-decoration: none;
+    margin-left: -10px;
+}
+
+/* Right Section: Navigation Links */
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff9800;
+    /* Orange color on hover */
+    text-decoration: none;
+    font-size: 16.1px;
+    font-weight: 530;
+    transition: color 0.3s ease;
+}
+
+.navbar .profile-link:hover {
+    background-color: #ff9800;  /* Background color on hover */
+    color: white;              /* Text color on hover */
+    transition: background-color 0.3s ease, color 0.3s ease;  /* Smooth transition */
+}
+.login-btn {
+    padding: 5px 10px;
+    margin-top: -10px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.login-btn:hover {
+    background-color: #e68900;
+    font-size: 14.1px;
+    font-weight: 530;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal.show {
+    display: flex; /* Show when 'show' class is added */
+}
+.modal-content {
+    background-color: #fff;
+    padding: 40px; /* Increased padding for more spacious feel */
+    border-radius: 15px; /* Slightly rounded corners */
+    width: 500px; /* Increased width */
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow for emphasis */
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.closeBtn {
+    color: #333;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    cursor: pointer;
+    right: 25px;
+}
+
+.closeBtn:hover {
+    color: #ff9800;
+    /* Matches the website's orange accent */
+}
+
+input {
+    width: 95%; /* Slightly wider input fields */
+    padding: 15px; /* Increased padding for larger input fields */
+    margin: 15px 0; /* Increased margin between input fields */
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Slightly more rounded corners */
+    font-size: 16px; /* Larger font size for better readability */
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #ff9800;
+    /* Highlighted border matches website's theme */
+    outline: none;
+}
+
+/* Form Styling */
+form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+form button {
+    width: 55%; /* Matches the width of the input fields */
+    padding: 12px; /* Slightly larger padding for prominence */
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 10px; /* Rounded corners for consistency */
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px; /* Larger font size */
+    font-weight: 500; /* Bold text for buttons */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+form button:hover {
+    background-color: #e68900;
+}
+
+#signUpLink, #signInLink {
+    color: #ff9800;
+    cursor: pointer;
+    font-size: 14px; /* Slightly larger link text */
+    font-weight: bold;
+}
+
+#signUpLink:hover, #signInLink:hover {
+    color: #e68900; /* Hover color matches button hover */
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* About Section Styles */
+.about {
+    padding: 60px 0px;
+    background-color: #f4f9fc;
+    /* Soft blueish-white tone for distinction */
+    border: 1px solid #dce4e9;
+    /* Subtle border for structure */
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow for depth */
+}
+
+.about-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff9800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.about-text {
+    flex: 1;
+    max-width: 600px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.about-image {
+    flex: 1;
+    max-width: 450px;
+    margin-left: 50px;
+    /* border-radius: 12px; */
+    text-align: center;
+    overflow: hidden;
+    /* Ensure images do not overflow */
+    position: relative;
+}
+
+.image-carousel {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    /* Fixed height for the carousel */
+    overflow: hidden;
+    /* Ensures no content overflows */
+    display: flex;
+    /* Use flexbox to handle alignment */
+    justify-content: center;
+    /* Centers the images horizontally */
+    align-items: center;
+    /* Centers the images vertically */
+    border-radius: 12px;
+}
+
+.image-carousel img {
+    width: 100%;
+    /* Ensures the image covers the entire width */
+    height: 100%;
+    /* Ensures the image covers the entire height */
+    object-fit: cover;
+    /* Ensures the image fills the block without distortion */
+    position: absolute;
+    /* Makes the image overlap properly */
+    left: 0;
+    /* Aligns the image to the left edge */
+    top: 0;
+    /* Aligns the image to the top edge */
+    animation: carousel 12s infinite;
+    /* Animation for carousel effect */
+    opacity: 0;
+    /* Start with the image hidden */
+    transition: opacity 2s ease-in-out;
+    /* Smooth fade-in and fade-out */
+}
+
+.image-carousel img:nth-child(1) {
+    animation-delay: 0s;
+    /* First image starts immediately */
+    opacity: 1;
+    /* Ensure the first image starts visible */
+}
+
+.image-carousel img:nth-child(2) {
+    animation-delay: 4s;
+    /* Delay for second image */
+}
+
+.image-carousel img:nth-child(3) {
+    animation-delay: 8s;
+    /* Delay for third image */
+}
+.image-carousel img:nth-child(4) {
+    animation-delay: 12s;
+    /* Delay for third image */
+}
+
+/* Keyframes for Image Carousel */
+@keyframes carousel {
+    0% {
+        opacity: 1;
+        /* Image fully visible */
+    }
+
+    33% {
+        opacity: 1;
+        /* Image remains visible */
+    }
+
+    40% {
+        opacity: 0;
+        /* Image starts fading out */
+    }
+
+    100% {
+        opacity: 0;
+        /* Image remains hidden */
+    }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .image-carousel {
+        height: 200px;
+        /* Adjust carousel height for smaller screens */
+    }
+}
+
+
+/* Events Section */
+.events {
+    border-bottom: 1px solid #dce4e9;
+    padding: 50px 0;
+    background-color: #f4f9fc;
+    text-align: center;
+}
+
+.events h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Slider */
+.event-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.slider-wrapper {
+    overflow: hidden;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.event-cards {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.event-card {
+    flex: 0 0 300px;
+    margin-right: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+}
+
+.event-card img {
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.event-card h3 {
+    margin: 15px 0;
+}
+
+.event-card button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.event-card button:hover {
+    background-color: #0056b3;
+}
+
+/* Arrows */
+.arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    padding: 10px;
+}
+
+.left-arrow {
+    left: 0;
+}
+
+.right-arrow {
+    right: 0;
+}
+
+/* No Empty Space Between Cards */
+.event-cards > :last-child {
+    margin-right: 0;
+}
+
+/* Contact Section */
+.contact {
+    padding: 50px 50px;
+    background-color: #f9f9f9;
+}
+
+.contact .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.contact-content {
+    margin-left: 40px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    flex: 1;
+    max-width: 40%;
+    text-align: left;
+}
+
+.contact-info h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contact-info p {
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+.contact-form {
+    margin-right: 90px;
+    flex: 1;
+    max-width: 30%; /* Reduced width */
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Reduced gap between fields */
+    background-color: #fff;
+    padding: 15px; /* Reduced padding */
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Fields Layout */
+.contact-form .form-row {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.85em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    /* margin-bottom: 15px; */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ff9800; /* Highlighted border matches website's theme */
+    outline: none; /* Removes default browser outline */
+    box-shadow: 0 0 5px rgba(255, 152, 0, 0.2); /* Optional glowing effect */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+/* Textarea Placeholder Styling */
+.contact-form textarea::placeholder {
+    font-size: 1.2em; /* Larger placeholder text */
+    color: #aaa; /* Softer placeholder color */
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 80px;
+    font-size: 1em; 
+}
+
+.contact-form button {
+    position: relative;
+    margin: 10px auto; /* Center the button horizontally */
+    display: block; /* Ensure it's treated as a block element for centering */
+    padding: 8px 15px;
+    font-size: 0.9em;
+    background-color: #ff9800; /* Updated color */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #e68900;
+}
+
+
+/* Popup Styling */
+.popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    z-index: 1000;
+    display: none;
+}
+
+.popup.show {
+    display: block; /* Show when the "show" class is added */
+    animation: fadeInOut 3s forwards;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+.event-card.explore-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    margin-top: 10px;
+}
+
+.event-card.explore-more:hover {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+/* Modal for Viewing Registered Users */
+/* Modal styles for registered users */
+.modal-registered-users {
+    display: none;  /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);  /* Dark background */
+    z-index: 1001;  /* On top of other content */
+    padding-top: 50px; /* Reduce the padding-top to move the modal content upwards */
+}
+
+/* Modal content styles */
+.modal-content-registered-users {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 60%; /* Reduced width from 80% to 60% */
+    max-width: 700px; /* Reduced max-width */
+    overflow-y: auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* Positioning the close button relative to this */
+}
+
+/* Close button styling */
+.close-btn-registered-users {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.close-btn-registered-users:hover,
+.close-btn-registered-users:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal body styling for displaying table */
+#registered-users-modal-body {
+    margin-top: 20px;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+/* Table styles inside the modal */
+#registered-users-modal-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#registered-users-modal-body th, 
+#registered-users-modal-body td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#registered-users-modal-body th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+#registered-users-modal-body tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Footer */
+footer {
+    background-color: #333; /* Adjust color as needed */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    margin-top: auto; /* Ensure footer stays at the bottom */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}

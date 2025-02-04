@@ -1,0 +1,338 @@
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    padding: 0;
+    margin: 0;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 16px 40px 11px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0px 10px 0px -20px;
+}
+
+/* Left Section: Logo and Heading */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff9800; /* Vibrant orange for logo */
+    text-decoration: none;
+    margin-left: -10px;
+}
+
+/* Right Section: Navigation Links */
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff9800; 
+    text-decoration: none;
+    font-size: 16.1px;
+    font-weight: 530;
+    transition: color 0.3s ease;
+}
+
+.navbar .profile-link:hover {
+    background-color: #ff9800;  /* Background color on hover */
+    color: white;              /* Text color on hover */
+    transition: background-color 0.3s ease, color 0.3s ease;  /* Smooth transition */
+}
+/* Profile icon and dropdown */
+.profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #333;
+    color: white;
+    min-width: 120px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #ff9800;
+}
+
+/* Show dropdown on hover */
+.profile:hover .dropdown-content {
+    display: block;
+}
+
+/* Event Form Section Styles */
+.event-form {
+    padding: 50px 20px;
+    background-color: #f4f9fc;
+    border: 1px solid #dce4e9;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-radius: 10px; /* Adds a slight curve to the container */
+}
+
+.form-title {
+    font-size: 2rem;
+    color: #ff9800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+    border-color: #ff9800;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 152, 0, 0.2);
+}
+
+/* Customize file input for consistency */
+input[type="file"] {
+    padding: 5px; /* Ensure enough padding without breaking the layout */
+    font-size: 0.9rem; /* Slightly smaller text for file input */
+    cursor: pointer; /* Indicate that it's clickable */
+}
+
+button {
+    background-color: #ff9800;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #e68900;
+    transform: scale(1.05); /* Adds a subtle zoom effect */
+}
+
+/* Error state for inputs (Optional, for validation feedback) */
+input.error,
+select.error {
+    border-color: red;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .event-form {
+        padding: 30px 15px;
+    }
+
+    .form-title {
+        font-size: 1.8rem;
+    }
+
+    form {
+        gap: 15px;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
+
+/* Popup Styling */
+.popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    z-index: 1000;
+    display: none;
+}
+
+.popup.show {
+    display: block; /* Show when the "show" class is added */
+    animation: fadeInOut 3s forwards;
+}
+
+.hidden {
+    display: none;
+}
+
+#profile-page {
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f9fc;
+    border: 1px solid #dce4e9;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 5px;
+}
+
+#profile-page h2 {
+    color: #ff9800;
+}
+
+#profile-page button {
+    background-color: #ff9800;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#profile-page button:hover {
+    background-color: #e68900;
+}
+
+/* Footer */
+footer {
+    padding: 20px 0px;
+    background-color: #222;
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* success login popup*/
+.flash-message {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    background-color: #4CAF50; /* Green for success */
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.flash-message.error {
+    background-color: #f44336; /* Red for errors */
+}
+

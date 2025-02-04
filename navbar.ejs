@@ -1,0 +1,30 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo" class="logo-image">
+            <a href="/">Eventify</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/dashboard">Events</a></li>
+            <li><a href="/registered-events">Registered Events</a></li>
+            <li><a href="/#contact">Contact Us</a></li>
+            <% if (userId) { %>
+                <li>
+                    <div class="profile">
+                        <img src="images/profile.jpg" alt="Profile" class="profile-icon">
+                        <div class="dropdown">
+                            <button class="dropbtn">▼</button>
+                            <div class="dropdown-content">
+                                <a href="/profile" class="profile-link">Profile</a>
+                                <a href="/logout" class="profile-link">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <% } else { %>
+                <li><button id="login-btn" class="login-btn">Login</button></li>
+            <% } %>
+        </ul>
+    </div>
+</nav>

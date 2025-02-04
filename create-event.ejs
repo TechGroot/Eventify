@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventify - College Event Management</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="admin.css">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%- include('admin-navbar', { userId: adminId }) %>
+
+    <section id="event-form-section" class="event-form">
+        <div class="container">
+            <h2 class="form-title">Create an Event</h2>
+            <form id="event-form">
+                <!-- Event Type -->
+                <div class="form-group">
+                    <label for="event-type">Event Type</label>
+                    <select id="event-type" name="eventType" required>
+                        <option value="" disabled selected>Select an event type</option>
+                        <option value="Tech">Tech Event</option>
+                        <option value="Sports">Sports Event</option>
+                        <option value="Literature">Literature Event</option>
+                        <option value="Cultural">Cultural Event</option>
+                    </select>
+                </div>
+
+                <!-- Event Title -->
+                <div class="form-group">
+                    <label for="event-title">Event Title</label>
+                    <input type="text" id="event-title" name="eventTitle"
+                        placeholder="Enter event title (e.g., Coding Marathon)" required />
+                </div>
+
+                <!-- Event Location -->
+                <div class="form-group">
+                    <label for="event-location">Event Location</label>
+                    <input type="text" id="event-location" name="eventLocation" placeholder="Enter event location"
+                        required />
+                </div>
+
+                <!-- Event Date -->
+                <div class="form-group">
+                    <label for="event-date">Event Date</label>
+                    <input type="date" id="event-date" name="eventDate" required />
+                </div>
+
+                <!-- Photo Upload -->
+                <div class="form-group">
+                    <label for="event-photo">Upload Photo</label>
+                    <input type="file" id="event-photo" name="eventPhoto" accept="image/*" required />
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit">Submit Event</button>
+                </div>
+            </form>
+            <!-- Success Popup -->
+            <div id="success-popup" class="popup hidden">
+                <p>Your response has been submitted successfully!</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Eventify. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+    <script src="create-event.js"></script>
+</body>
+
+</html>

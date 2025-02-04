@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventify - College Event Management</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <%- include(isAdmin ? 'admin-navbar' : 'navbar' , { userId: isAdmin ? adminId : userId }) %>
+        <!-- Hidden div to store flash messages -->
+        <div id="flashMessageContainer" data-success="<%= successMsg && successMsg.length > 0 ? successMsg[0] : '' %>"
+            data-error="<%= errorMsg && errorMsg.length > 0 ? errorMsg[0] : '' %>">
+        </div>
+
+
+        <!-- Modal Popup -->
+        <div id="loginModal" class="modal <%= showLoginModal ? 'show' : '' %>">
+            <div class="modal-content">
+                <span class="closeBtn">&times;</span>
+                <h2 id="modalTitle">Login</h2>
+                <div class="form-container">
+                    <!-- Sign In Form -->
+                    <form id="signInForm" style="display: block;" method="post" action="http://localhost:1080/login">
+                        <input name="email" type="email" placeholder="Email" required>
+                        <input name="password" type="password" placeholder="Password" required>
+                        <button type="submit">Sign In</button>
+                        <p>If you don't have an account, <span id="signUpLink">Sign Up</span></p>
+                    </form>
+
+                    <!-- Sign Up Form -->
+                    <form id="signUpForm" style="display: none;" method="post" action="http://localhost:1080/register">
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="text" name="name" placeholder="Username" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <button type="submit">Sign Up</button>
+                        <p>Already have an account? <span id="signInLink">Sign In</span></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="about-title">About Eventify</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            Welcome to <strong>Eventify</strong>, your ultimate college event management platform!
+                            Designed to revolutionize the way you organize and participate in events, Eventify ensures
+                            seamless coordination and hassle-free execution. Whether it’s cultural fests, technical
+                            workshops, or community meetups, Eventify empowers you to manage every aspect with ease.
+                        </p>
+                        <p>
+                            Our mission is to provide an intuitive and feature-rich platform that simplifies event
+                            planning for students, teachers, and organizers. From creating event schedules to managing
+                            registrations and sending updates, we've got everything covered.
+                        </p>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-carousel">
+                            <img src="images/literature.JPG" alt="Event 1" />
+                            <img src="images/coding.jpg" alt="Event 2" />
+                            <img src="images/sports.jpg" alt="Event 3" />
+                            <img src="images/cultural.jpg" alt="Event 3" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="events" class="events">
+            <div class="container">
+                <h2>Upcoming Events</h2>
+                <div class="event-slider">
+                    <button class="arrow left-arrow" id="leftArrow">&#9664;</button>
+                    <div class="slider-wrapper">
+                        <div class="event-cards" id="eventCardsContainer">
+                            <!-- Event cards will be inserted here dynamically -->
+                        </div>
+                    </div>
+                    <button class="arrow right-arrow" id="rightArrow">&#9654;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Structure -->
+        <!-- Modal for Viewing Registered Users -->
+        <div id="popup-container" class="hidden">
+            <div id="popup-content">
+                <button id="close-popup">Close</button>
+                <h2>Registered Students</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="popup-table-body">
+                        <!-- Rows will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2>Contact Us</h2>
+                        <p>
+                            Fill out your information, and we will reach out to you soon.
+                            Whether you have questions, suggestions, or feedback, we're here to assist.
+                            Please provide accurate details so we can connect with you promptly.
+                        </p>
+                    </div>
+                    <form id="contact-form" class="contact-form">
+                        <!-- First Name and Last Name on the Same Row -->
+                        <div class="form-row">
+                            <input type="text" id="first-name" placeholder="First Name" required>
+                            <input type="text" id="last-name" placeholder="Last Name" required>
+                        </div>
+                        <input type="email" id="email" placeholder="Email ID" required>
+                        <input type="tel" id="phone" placeholder="Phone No." required>
+                        <input type="text" id="college" placeholder="University/College Name" required>
+                        <textarea id="message" placeholder="Message" required></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <!-- Success Popup -->
+                <div id="success-popup" class="popup hidden">
+                    <p>Your response has been submitted successfully!</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container" id="footer">
+                <p>&copy; 2025 Eventify. All Rights Reserved.</p>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+        <script src="dashboard.js"></script>
+
+</body>
+
+</html>

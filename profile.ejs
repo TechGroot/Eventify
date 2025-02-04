@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventify - College Event Management</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%- include(isAdmin ? 'admin-navbar' : 'navbar' , { userId: isAdmin ? adminId : userId }) %>
+
+        <!-- Profile Page Section -->
+        <div id="profile-page">
+            <h2>Profile</h2>
+            <p style="padding: 20px 0;"><strong>Name:</strong>
+                <%= user.name %>
+            </p>
+            <p style="padding: 0 0 20px;"><strong>Email ID:</strong>
+                <%= user.email %>
+            </p>
+            <button onclick="window.location.href='/dashboard'">Back to Dashboard</button>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Eventify. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+        <script src="dashboard.js"></script>
+        <script src="create-event.js"></script>
+</body>
+
+</html>

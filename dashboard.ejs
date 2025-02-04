@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventify - College Event Management</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <%- include(isAdmin ? 'admin-navbar' : 'navbar' , { userId: isAdmin ? adminId : userId }) %>
+
+        <!-- Main content -->
+        <main id="main">
+            <h1>Available Events</h1>
+            <% for (const [type, events] of Object.entries(groupedEvents)) { %>
+                <div class="carousel-container">
+                    <h2>
+                        <%= type %> Events
+                    </h2>
+                    <div class="carousel">
+                        <% events.forEach(event=> { %>
+                            <div class="event-card">
+                                <img src="<%= event.image || 'default.jpg' %>" alt="<%= event.name %>"
+                                    class="event-image">
+                                <div class="event-info">
+                                    <h3>
+                                        <%= event.title %>
+                                    </h3>
+                                    <p>Location: <%= event.venue %>
+                                    </p>
+                                    <p>Date: <%= new Date(event.date).toLocaleDateString() %>
+                                    </p>
+                                    <button class="<%= isAdmin ? 'view-registrations-btn' : 'register-btn' %>"
+                                        data-event-id="<%= event._id %>"
+                                        <% if (!isAdmin && event.isRegistered) { %>
+                                          style="background-color: #0056b3;"
+                                          disabled
+                                        <% } else { %>
+                                          style="background-color: #007bff;"
+                                        <% } %>>
+                                        <%= isAdmin ? 'View Registered' : (event.isRegistered ? 'Registered' : 'Register') %>
+                                    </button>
+                                    
+                                    
+                                    
+                                    <br>
+                                    <% if (isAdmin) { %>
+                                        <button class="edit-event-btn" data-event-id="<%= event._id %>">
+                                            Edit
+                                        </button>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <% }) %>
+                    </div>
+                    <button class="arrow left-arrow">&lt;</button>
+                    <button class="arrow right-arrow">&gt;</button>
+                </div>
+                <% } %>
+        </main>
+        <div id="popup-container" class="hidden">
+            <div id="popup-content">
+                <button id="close-popup">Close</button>
+                <h2>Registered Students</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="popup-table-body">
+                        <!-- Rows will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Eventify. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+        <script src="dashboard.js"></script>
+        <!--<script src="script.js"></script> -->
+</body>
+
+</html>
